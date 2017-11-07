@@ -7,10 +7,10 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.CustomLayout;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -24,20 +24,20 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
         
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        
+        Panel loginPanel = new Panel("Login");
+        CustomLayout content = new CustomLayout("my-layout");
+        content.setSizeUndefined();
+        loginPanel.setContent(content);
+        loginPanel.setSizeUndefined();
 
-        Button button = new Button("Click Me");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
-        });
+        // No captions for fields is they are provided in the template
+        content.addComponent(new TextField(), "username");
+        content.addComponent(new TextField(), "password");
+        content.addComponent(new Button("Login"), "okbutton");
         
-        layout.addComponents(name, button);
-        
-        setContent(layout);
+        setContent(content);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
