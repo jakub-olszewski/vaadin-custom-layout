@@ -77,3 +77,10 @@ git config --global user.name "jakub-olszewski"
 git commit -m "Init commit"
 git push -u origin master
 ```
+Git - use gitignore
+-------------------
+```
+git rm -r --cached .
+git add .
+git status
+```
