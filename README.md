@@ -49,4 +49,31 @@ Using Vaadin pre-releases
 -------------------------
 
 If Vaadin pre-releases are not enabled by default, use the Maven parameter
-"-P vaadin-prerelease" or change the activation default value of the profile in pom.xml .
+"-P vaadin-prerelease" or change the activation default value of the profile in pom.xml .C
+
+How to create project on GitHub (linux)
+=======================================
+
+Create repository on github
+---------------------------
+```
+git clone https://github.com/jakub-olszewski/vaadin-custom-layout.git
+```
+```
+mvn archetype:generate -DarchetypeGroupId=com.vaadin -DarchetypeArtifactId=vaadin-archetype-application -DarchetypeVersion=8.1.6 -DgroupId=eu.b24u.vaadin -Dversion=0.1 -Dpackaging=war
+```
+Write: vaadin-custom-layout
+
+Note:
+* Latest version : https://mvnrepository.com/artifact/com.vaadin/vaadin-archetype-application
+* in the same folder
+
+Git - add and commit
+--------------------
+```
+git add .
+git config --global user.email "j.b.olszewski@gmail.com" 
+git config --global user.name "jakub-olszewski" 
+git commit -m "Init commit"
+git push -u origin master
+```
